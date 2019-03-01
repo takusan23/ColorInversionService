@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="色反転の有効・無効はサードパーティのアプリでは権限が扱えないため変更できません。\n権限を取得するには以下の作業をしてください。\nADBが使える状態で、\n\n adb shell pm grant io.github.takusan23.colorinversionservice android.permission.WRITE_SECURE_SETTINGS \n\nをターミナルに入力してください。" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/permission_check_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="権限がありません"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <Button
+        android:id="@+id/service_start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="色反転サービス開始" />
+
+    <Button
+        android:id="@+id/service_stop_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="色反転サービス終了" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="色反転の間隔を変更できます（秒で入力してね）\nデフォ：60" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/time_editText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="秒で入力してね"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/time_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="間隔設定" />
+    </LinearLayout>
+</LinearLayout>
