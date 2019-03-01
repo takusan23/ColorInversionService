@@ -59,7 +59,8 @@ public class ColorInversionTimerService extends Service {
 
         //定期実行
         timer = new Timer();
-        long time = pref_setting.getLong("time",60000);
+        long time = pref_setting.getLong("time", 60000);
+        final SharedPreferences.Editor editor = pref_setting.edit();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -73,10 +74,16 @@ public class ColorInversionTimerService extends Service {
                             //ON
                             Settings.Secure.putInt(getContentResolver(), ACCESSIBILITY_DISPLAY_INVERSION_ENABLED, 0);
                             showNotification("色反転は無効になりました。", R.drawable.ic_invert_colors_off_black_24dp);
+                            //QSTile用保存
+                            editor.putBoolean("color", false);
+                            editor.apply();
                         } else {
                             //OFF
                             Settings.Secure.putInt(getContentResolver(), ACCESSIBILITY_DISPLAY_INVERSION_ENABLED, 1);
                             showNotification("色反転は有効になりました。", R.drawable.ic_invert_colors_black_24dp);
+                            //QSTile用保存
+                            editor.putBoolean("color", true);
+                            editor.apply();
                         }
                     } catch (Settings.SettingNotFoundException e) {
                         e.printStackTrace();
