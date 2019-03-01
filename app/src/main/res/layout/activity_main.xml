@@ -22,8 +22,7 @@
         android:id="@+id/permission_check_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="権限がありません"
-        android:textSize="18sp" />
+        android:text="権限がありません" />
 
     <Space
         android:layout_width="match_parent"
